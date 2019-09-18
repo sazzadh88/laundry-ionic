@@ -1,5 +1,7 @@
 {
   "name": "Laundry",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
