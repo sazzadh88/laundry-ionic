@@ -19,8 +19,10 @@ export class KidstabPage implements OnInit {
     });
   }
 
-  ionViewWillLeave() {
+  ionViewwillLeave() {
     this.events.unsubscribe("data:dress");
-    this.events.publish("data:dress");
+  }
+  ionViewDidLeave() {
+    this.events.publish("data:dress", this.data);
   }
 }

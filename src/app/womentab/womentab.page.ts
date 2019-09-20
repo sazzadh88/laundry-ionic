@@ -18,8 +18,10 @@ export class WomentabPage implements OnInit {
 
   ngOnInit() {}
 
-  ionViewWillLeave() {
+  ionViewwillLeave() {
     this.events.unsubscribe("data:dress");
-    this.events.publish("data:dress");
+  }
+  ionViewDidLeave() {
+    this.events.publish("data:dress", this.data);
   }
 }
