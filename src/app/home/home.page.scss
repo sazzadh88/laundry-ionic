@@ -1,4 +1,31 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+.home-slider {
+  height: 35%;
+  ion-slide {
+    width: 100% !important;
+    img {
+      object-fit: fill !important;
+      width: 100% !important;
+    }
+  }
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+.category_card {
+  width: 40%;
+
+  display: inline-block;
+  padding: 14px;
+  margin-left: 20px;
+  text-align: center;
+  ion-card {
+    border-radius: 50%;
+  }
+  p {
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: bold;
+    color: #4e4e4e;
+    text-shadow: 6.5px 5.5px 6px #eee;
+  }
 }

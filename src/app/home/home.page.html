@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -10,5 +10,51 @@
 </ion-header>
 
 <ion-content>
-   <ion-button full primary>Login</ion-button>
+  <ion-slides class="home-slider" pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img src="./assets/images/3-2.jpg" alt="" />
+    </ion-slide>
+    <ion-slide>
+      <img
+        src="./assets/images/comfort-laundry-dry-cleaning-services-delhi-1jkdd6iuyo.jpg"
+        alt=""
+      />
+    </ion-slide>
+    <ion-slide>
+      <img src="./assets/images/Washateria-2.jpg" alt="" />
+    </ion-slide>
+  </ion-slides>
+
+  <div class="category_card ">
+    <ion-card class="round" (click)="openCategory('DRY_CLEANING')">
+      <ion-card-content>
+        <ion-img src="./assets/images/dry.png"></ion-img>
+      </ion-card-content>
+    </ion-card>
+    <p>Dry Cleaning</p>
+  </div>
+  <div class="category_card ">
+    <ion-card class="round" (click)="openCategory('IRONING')">
+      <ion-card-content>
+        <ion-img src="./assets/images/iron.png"></ion-img>
+      </ion-card-content>
+    </ion-card>
+    <p>Ironing</p>
+  </div>
+  <div class="category_card ">
+    <ion-card class="round" (click)="openCategory('DRESS_WASH')">
+      <ion-card-content>
+        <ion-img src="./assets/images/washing-machine.png"></ion-img>
+      </ion-card-content>
+    </ion-card>
+    <p>Dress Wash</p>
+  </div>
+  <div class="category_card ">
+    <ion-card class="round" (click)="openCategory('DUVET_CLEANING')">
+      <ion-card-content>
+        <ion-img src="./assets/images/blanket.png"></ion-img>
+      </ion-card-content>
+    </ion-card>
+    <p>Duvet Cleaning</p>
+  </div>
 </ion-content>
