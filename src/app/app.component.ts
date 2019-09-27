@@ -20,6 +20,11 @@ export class AppComponent {
       icon: "home"
     },
     {
+      title: "My Cart",
+      url: "/cart",
+      icon: "cart"
+    },
+    {
       title: "My Orders",
       url: "/my-order",
       icon: "ios-basket"
@@ -33,11 +38,6 @@ export class AppComponent {
       title: "Logout",
       url: "/login",
       icon: "log-out"
-    },
-    {
-      title: "List",
-      url: "/list",
-      icon: "list"
     }
   ];
 

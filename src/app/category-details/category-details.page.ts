@@ -10,39 +10,6 @@ import { Events } from "@ionic/angular";
 export class CategoryDetailsPage implements OnInit {
   data: any;
 
-  dress = {
-    men: [
-      {
-        name: "Men1",
-        price: "Rs 20"
-      },
-      {
-        name: "Men2",
-        price: "Rs 202"
-      }
-    ],
-    women: [
-      {
-        name: "Women1",
-        price: "Rs 20"
-      },
-      {
-        name: "Women2",
-        price: "Rs 202"
-      }
-    ],
-    kids: [
-      {
-        name: "Kids 1",
-        price: "Rs 20"
-      },
-      {
-        name: "Kids 2",
-        price: "Rs 202"
-      }
-    ]
-  };
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -50,7 +17,7 @@ export class CategoryDetailsPage implements OnInit {
   ) {
     // this.route.queryParams.subscribe(params => {
     //   if (this.router.getCurrentNavigation().extras.state) {
-    //     this.data = this.router.getCurrentNavigation().extras.state.category;
+    //     this.data = this.router.getCurrentNavigation().extras.state.data;
     //   }
     // });
   }

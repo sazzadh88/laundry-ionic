@@ -30,3 +30,41 @@
 * {
   font-family: "Open Sans", sans-serif !important;
 }
+
+ion-spinner.spinner-ios line {
+  stroke: red;
+}
+
+.product_page {
+  ion-row {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0 !important;
+    ion-col {
+      text-align: center !important;
+    }
+    .price_tag {
+      display: grid;
+      align-items: center;
+      .product_name {
+        font-weight: bold;
+        color: var(--ion-color-primary);
+      }
+
+      .product_price {
+        color: var(--ion-color-primary-shade);
+        font-size: 0.9rem;
+      }
+    }
+    ion-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 80% !important;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.w100 {
+  width: 100% !important;
+}

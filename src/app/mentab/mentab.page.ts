@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Events } from "@ionic/angular";
+import { Events, LoadingController } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
+import { HttpHeaders, HttpClient } from "@angular/common/http";
+import { Config } from "../config";
 
 @Component({
   selector: "app-mentab",
@@ -41,23 +43,92 @@ export class MentabPage implements OnInit {
     ]
   };
   data: any;
+  response: any;
+  token: any;
+  category: any;
+  quantity_s = 0;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public events: Events
+    public events: Events,
+    public http: HttpClient,
+    public loadingController: LoadingController,
+    private config: Config
   ) {
+    this.token = this.config.getToken();
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.data = this.router.getCurrentNavigation().extras.state.category;
+        this.category = this.router.getCurrentNavigation().extras.state.data;
       }
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.showLoader("Loading Items");
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json; charset=utf-8",
+      Authorization: "Bearer " + this.token
+    });
 
+    this.http
+      .post(
+        this.config.API_URL + "getItems",
+        { type: this.category },
+        { headers: headers }
+      )
+      .subscribe(
+        data => {
+          this.data = data;
+          this.loadingController.dismiss();
+          console.log(this.data);
+        },
+        error => {
+          this.loadingController.dismiss();
+          this.config.showToast(
+            "Failed! Please check your internet connection"
+          );
+        }
+      );
+  }
   ionViewWillEnter() {}
 
+  async showLoader(msg) {
+    const loading = await this.loadingController.create({
+      message: msg
+    });
+    await loading.present();
+  }
+
+  addToCart(item) {
+    this.showLoader("Adding to cart");
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json; charset=utf-8",
+      Authorization: "Bearer " + this.token
+    });
+
+    this.http
+      .post(
+        this.config.API_URL + "addToCart",
+        { item: item },
+        { headers: headers }
+      )
+      .subscribe(
+        data => {
+          this.response = data;
+          this.loadingController.dismiss();
+          this.config.showToast(this.response.response);
+        },
+        error => {
+          this.loadingController.dismiss();
+          this.config.showToast(
+            "Failed! Please check your internet connection"
+          );
+        }
+      );
+  }
+
   ionViewWillLeave() {
-    this.events.publish("data:dress", this.dress);
+    this.events.publish("data:dress", this.data);
+    this.events.publish("data:_dress", this.data);
   }
 }

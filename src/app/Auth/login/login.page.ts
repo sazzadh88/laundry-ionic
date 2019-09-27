@@ -32,8 +32,10 @@ export class LoginPage implements OnInit {
       .subscribe(
         data => {
           this.response_data = data;
+          this.loadingController.dismiss();
           localStorage.setItem("token", this.response_data.token);
           this.setUserData(this.response_data.token);
+
           this.presentAlert(this.response_data.response);
         },
         error => {
@@ -74,7 +76,7 @@ export class LoginPage implements OnInit {
           "user",
           JSON.stringify(this.response_user_data.user)
         );
-        this.loadingController.dismiss();
+        // this.loadingController.dismiss();
 
         this.router.navigateByUrl("home");
       });

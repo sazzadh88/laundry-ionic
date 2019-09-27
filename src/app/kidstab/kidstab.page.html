@@ -6,10 +6,30 @@
     <ion-title>
       Kids
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge slot="end"></ion-badge>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  Data should appear here
-  {{ data?.kids | json }}
+<ion-content class="product_page">
+  <ion-grid>
+    <ion-row *ngFor="let item of data?.kids">
+      <ion-col>
+        <ion-img [src]="config.API_IMG_URL + item.image"></ion-img>
+      </ion-col>
+      <ion-col class="price_tag">
+        <div class="product_name">{{ item.title }}</div>
+        <div class="product_price">{{ item.price }} / Pc</div>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="addToCart(item)">
+          <ion-icon name="cart"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

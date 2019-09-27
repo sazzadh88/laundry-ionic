@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      My Cart
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row *ngFor="let prod of data?.data">
+      <ion-col size="5">
+        <span class="">{{ prod.item["title"] }}</span>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button fill="outline" shape="round" size="small">+</ion-button>
+        <span class="quantity">{{ prod.quantity }}</span>
+        <ion-button fill="outline" shape="round" size="small">-</ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <span class=""
+          >₹ {{ prod.price * prod.quantity | number: "1.2-2" }}</span
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item lines="none">
+    <ion-label>
+      <h4 class="total_left">GST</h4>
+      <h4 class="total_right">0.00</h4>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>
+      <h4 class="total_left">Total</h4>
+      <h4 class="total_right">{{ sum | number: "1.2-2" }}</h4>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-button
+      class="w100"
+      size="default"
+      expand="full"
+      shape="round"
+      fill="outline"
+      >Choose Expected Delivery Date</ion-button
+    >
+  </ion-item>
+</ion-content>

@@ -47,7 +47,8 @@ const routes: Routes = [
         pathMatch: "full"
       }
     ]
-  }
+  },
+  { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' }
 ];
 
 @NgModule({

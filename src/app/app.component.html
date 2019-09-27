@@ -8,8 +8,8 @@
             [src]="chosenPicture || placeholder"
             onerror="this.src='assets/images/girl-avatar.png'"
           />
-          <p class="name">{{ user.name }}</p>
-          <p class="e-mail">{{ user.email }}</p>
+          <p class="name">{{ user?.name }}</p>
+          <p class="e-mail">{{ user?.email }}</p>
         </div>
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">

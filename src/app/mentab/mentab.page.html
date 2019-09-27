@@ -3,20 +3,34 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
+
     <ion-title>
       Men
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge slot="end"></ion-badge>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  men content
-
-  {{ dress.men | json }}
-
-  <ul>
-    <li *ngFor="let item of dress.men">
-      {{ item.name }}
-    </li>
-  </ul>
+<ion-content class="product_page">
+  <ion-grid>
+    <ion-row *ngFor="let item of data?.men">
+      <ion-col>
+        <ion-img [src]="config.API_IMG_URL + item.image"></ion-img>
+      </ion-col>
+      <ion-col class="price_tag">
+        <div class="product_name">{{ item.title }}</div>
+        <div class="product_price">{{ item.price }} / Pc</div>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="addToCart(item)">
+          <ion-icon name="cart"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

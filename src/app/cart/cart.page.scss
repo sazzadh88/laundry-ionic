@@ -1,0 +1,43 @@
+.lbl_qty {
+  color: var(--ion-color-primary) !important;
+  font-weight: bold;
+}
+.lbl_name {
+  padding-left: 10% !important;
+  font-weight: bold !important;
+  color: #626262 !important;
+}
+
+.lbl_price {
+  font-weight: bold !important;
+  float: right !important;
+  color: #626262 !important;
+}
+
+.total_left {
+  float: left !important;
+  font-weight: bolder !important;
+  color: var(--ion-color-primary) !important;
+  font-size: 1rem;
+}
+.total_right {
+  float: right !important;
+  font-weight: bolder !important;
+  font-size: 1rem;
+}
+
+ion-row {
+  padding: 6px 0px;
+  border-bottom: 0.5px solid #eee;
+  ion-button {
+    height: 27px !important;
+    width: 28px !important;
+    margin: 4px 4px;
+  }
+}
+
+.quantity {
+  position: relative !important;
+  top: 5px !important;
+  margin: 0px 5px !important;
+}
