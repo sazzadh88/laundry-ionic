@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Events, LoadingController } from "@ionic/angular";
 import { Config } from "../config";
 import { HttpHeaders, HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-kidstab",
@@ -16,6 +17,7 @@ export class KidstabPage implements OnInit {
   constructor(
     public events: Events,
     public config: Config,
+    private router: Router,
     public loadingController: LoadingController,
     public http: HttpClient
   ) {
@@ -79,5 +81,9 @@ export class KidstabPage implements OnInit {
       message: msg
     });
     await loading.present();
+  }
+
+  goToCart() {
+    this.router.navigateByUrl("cart");
   }
 }

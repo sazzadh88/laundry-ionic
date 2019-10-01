@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form
+    [formGroup]="profileUpdateForm"
+    (ngSubmit)="updateProfile(profileUpdateForm.value)"
+  >
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col
+          class="ion-align-self-center"
+          size-md="6"
+          size-lg="5"
+          size-xs="12"
+        >
+          <div class="ion-padding">
+            <ion-item>
+              <ion-input
+                formControlName="name"
+                type="text"
+                placeholder="Enter your name"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="phone"
+                type="number"
+                placeholder="9000900000"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="email"
+                type="email"
+                placeholder="your@email.com"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="password"
+                type="password"
+                placeholder="Password"
+                required
+              >
+              </ion-input>
+            </ion-item>
+          </div>
+          <div class="ion-padding">
+            <ion-button
+              size="large"
+              [disabled]="!profileUpdateForm.valid"
+              type="submit"
+              expand="block"
+              >Update</ion-button
+            >
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

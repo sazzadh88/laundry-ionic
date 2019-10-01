@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { TabsPageComponent } from "./tabs-page/tabs-page.component";
 import { CategoryDetailsPage } from "./category-details/category-details.page";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 const routes: Routes = [
   {
@@ -15,10 +16,6 @@ const routes: Routes = [
     loadChildren: () =>
       import("./home/home.module").then(m => m.HomePageModule),
     canActivate: [AuthService]
-  },
-  {
-    path: "list",
-    loadChildren: () => import("./list/list.module").then(m => m.ListPageModule)
   },
   { path: "login", loadChildren: "./Auth/login/login.module#LoginPageModule" },
   {
@@ -48,12 +45,26 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' }
+  { path: "cart", loadChildren: "./cart/cart.module#CartPageModule" },
+  {
+    path: "order-details",
+    loadChildren: "./order-details/order-details.module#OrderDetailsPageModule"
+  },
+  {
+    path: "register",
+    loadChildren: "./Auth/register/register.module#RegisterPageModule"
+  },
+  {
+    path: "profile",
+    loadChildren: "./Auth/profile/profile.module#ProfilePageModule"
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [RouterModule]
 })

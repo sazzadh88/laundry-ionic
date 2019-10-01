@@ -81,4 +81,7 @@ export class LoginPage implements OnInit {
         this.router.navigateByUrl("home");
       });
   }
+  goToRegister() {
+    this.router.navigateByUrl("register");
+  }
 }

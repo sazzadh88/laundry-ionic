@@ -53,7 +53,7 @@ export class MentabPage implements OnInit {
     public events: Events,
     public http: HttpClient,
     public loadingController: LoadingController,
-    private config: Config
+    public config: Config
   ) {
     this.token = this.config.getToken();
     this.route.queryParams.subscribe(params => {
@@ -130,5 +130,9 @@ export class MentabPage implements OnInit {
   ionViewWillLeave() {
     this.events.publish("data:dress", this.data);
     this.events.publish("data:_dress", this.data);
+  }
+
+  goToCart() {
+    this.router.navigateByUrl("cart");
   }
 }

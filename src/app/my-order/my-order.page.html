@@ -4,11 +4,31 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      My Orders
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h3>This is my orders page</h3>
+<ion-content class="ion-padding">
+  <ion-item *ngFor="let item of data" (click)="openOrder(item)" button="true">
+    <img
+      style="height: 50px; width:50px"
+      slot="start"
+      src="./assets/images/tracking.png"
+    />
+
+    <ion-label>
+      <h2>
+        <span style="font-weight: bold">Order Ref: </span>{{ item.order_ref }}
+      </h2>
+      <h3>
+        <span style="font-weight: bold">Date: </span
+        >{{ item.expected_delivery_date }}
+      </h3>
+      <p>
+        <span style="font-weight: bold">Order Status: </span>{{ item.status }}
+      </p>
+    </ion-label>
+    <span slot="end">₹ {{ item.amount }}</span>
+  </ion-item>
 </ion-content>

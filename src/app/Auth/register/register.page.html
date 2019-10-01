@@ -1,7 +1,7 @@
 <ion-content class="ion-padding">
   <ion-img src="./assets/images/skip-the-laundry-new.png"></ion-img>
 
-  <form #form="ngForm" (ngSubmit)="login(form)">
+  <form [formGroup]="checkoutForm" (ngSubmit)="register(checkoutForm.value)">
     <ion-grid>
       <ion-row class="ion-justify-content-center">
         <ion-col
@@ -13,40 +13,47 @@
           <div class="ion-padding">
             <ion-item>
               <ion-input
-                name="email"
-                type="email"
-                placeholder="your@email.com"
-                ngModel
-                value="sazzadh88@gmail.com"
+                formControlName="name"
+                type="text"
+                placeholder="Enter your name"
                 required
               ></ion-input>
             </ion-item>
             <ion-item>
               <ion-input
-                name="password"
-                type="password"
-                placeholder="Password"
-                value="Sazzad@@99"
-                ngModel
+                formControlName="phone"
+                type="number"
+                placeholder="9000900000"
                 required
               ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="email"
+                type="email"
+                placeholder="your@email.com"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="password"
+                type="password"
+                placeholder="Password"
+                required
+              >
+              </ion-input>
             </ion-item>
           </div>
           <div class="ion-padding">
             <ion-button
               size="large"
+              [disabled]="!checkoutForm.valid"
               type="submit"
-              [disabled]="form.invalid"
               expand="block"
-              >Login</ion-button
+              >Register</ion-button
             >
           </div>
-          <p class="ion-text-center">
-            New to this?
-            <span (click)="goToRegister()" class="primary" button="true"
-              >Register here</span
-            >
-          </p>
         </ion-col>
       </ion-row>
     </ion-grid>

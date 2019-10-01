@@ -15,7 +15,7 @@ import { Config } from "./config";
 import { CategoryDetailsPage } from "./category-details/category-details.page";
 
 @NgModule({
-  declarations: [AppComponent, CategoryDetailsPage],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

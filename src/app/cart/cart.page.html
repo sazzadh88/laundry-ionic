@@ -16,9 +16,21 @@
         <span class="">{{ prod.item["title"] }}</span>
       </ion-col>
       <ion-col size="4">
-        <ion-button fill="outline" shape="round" size="small">+</ion-button>
+        <ion-button
+          fill="outline"
+          (click)="cartFunction(prod, 'inc')"
+          shape="round"
+          size="small"
+          >+</ion-button
+        >
         <span class="quantity">{{ prod.quantity }}</span>
-        <ion-button fill="outline" shape="round" size="small">-</ion-button>
+        <ion-button
+          fill="outline"
+          (click)="cartFunction(prod, 'dec')"
+          shape="round"
+          size="small"
+          >-</ion-button
+        >
       </ion-col>
       <ion-col size="3">
         <span class=""
@@ -42,12 +54,36 @@
   </ion-item>
   <ion-item lines="none">
     <ion-button
+      (click)="showDatePicker()"
       class="w100"
       size="default"
       expand="full"
       shape="round"
       fill="outline"
       >Choose Expected Delivery Date</ion-button
+    >
+  </ion-item>
+  <ion-item lines="none">
+    <h4>Expected Delivery Date : {{ deliveryDate }}</h4>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label position="floating">Delivery Address</ion-label>
+    <ion-textarea
+      class="ion-padding"
+      rows="6"
+      [(ngModel)]="address"
+      placeholder="Enter your delivery address"
+    ></ion-textarea>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-button
+      (click)="placeOrder()"
+      [disabled]="!address || sum == 0"
+      size="default"
+      expand="full"
+      class="w100"
+    >
+      Order Now</ion-button
     >
   </ion-item>
 </ion-content>

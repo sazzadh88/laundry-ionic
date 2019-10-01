@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Orders Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="ion-text-center primary" style="font-weight: bold">
+    Order ID: {{ data.order_ref }}
+  </p>
+  <p class="ion-text-center primary" style="font-size: 0.8rem !important;">
+    Date: {{ data.created_at }}
+  </p>
+  <img
+    style="height: 128px !important; display: block; margin: 0 auto !important;"
+    src="./assets/images/ironing.png"
+    class="ion-text-center"
+    alt=""
+  />
+  <p
+    class="ion-text-center primary"
+    style="font-weight: bold; font-size: 0.8rem !important;"
+  >
+    Status: {{ data.status }}
+  </p>
+  <div
+    style="border: 1px solid #eee !important; margin:  0 15px !important"
+  ></div>
+  <div class="ion-padding">
+    <p style="font-size: 0.8rem !important;font-weight: bold !important;">
+      Delivery Address <br />
+      <span style="color: #777;font-size: 0.8rem !important;">
+        {{ data.address }}
+      </span>
+    </p>
+    <p style="font-size: 0.8rem !important;font-weight: bold !important;">
+      Delivery Date <br />
+      <span style="color: #777;font-size: 0.8rem !important;">
+        {{ data.expected_delivery_date }}
+      </span>
+    </p>
+  </div>
+  <div
+    style="border: 1px solid #eee !important; margin:  0 15px !important"
+  ></div>
+  <div class="ion-padding">
+    <p style="font-size: 0.8rem !important;font-weight: bold !important;">
+      Order Details
+    </p>
+    <ion-grid *ngFor="let item of data.order_detail">
+      <ion-row>
+        <ion-col size="2">
+          <span class="primary bold">{{ item.quantity }} x</span>
+        </ion-col>
+        <ion-col size="7">
+          <span class="muted">{{ item.item["title"] }}</span>
+        </ion-col>
+        <ion-col size="3">
+          <span class="muted">₹ {{ item.item["price"] * item.quantity }}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div
+    style="border: 1px solid #eee !important; margin:  0 15px !important"
+  ></div>
+  <ion-row class="ion-padding">
+    <ion-col size="4">
+      <span class="muted">Sub Total</span>
+    </ion-col>
+    <ion-col size="5"></ion-col>
+    <ion-col size="3">
+      <span class="muted">₹ {{ data.amount }}</span>
+    </ion-col>
+  </ion-row>
+</ion-content>
