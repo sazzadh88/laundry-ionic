@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { CategoryDetailsPage } from './category-details.page';
+import { CategoryDetailsPage } from "./category-details.page";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: CategoryDetailsPage
   }
 ];
@@ -21,6 +21,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+
   declarations: [CategoryDetailsPage]
 })
 export class CategoryDetailsPageModule {}

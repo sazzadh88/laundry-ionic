@@ -13,6 +13,7 @@ import { AuthService } from "./auth.service";
 import { HttpClientModule } from "@angular/common/http";
 import { Config } from "./config";
 import { CategoryDetailsPage } from "./category-details/category-details.page";
+import { CategoryDetailsPageModule } from "./category-details/category-details.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,14 +22,16 @@ import { CategoryDetailsPage } from "./category-details/category-details.page";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CategoryDetailsPageModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AuthService,
-    Config
+    Config,
+    CategoryDetailsPageModule
   ],
   bootstrap: [AppComponent]
 })

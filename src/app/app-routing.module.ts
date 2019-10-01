@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { AuthService } from "./auth.service";
-import { TabsPageComponent } from "./tabs-page/tabs-page.component";
 import { CategoryDetailsPage } from "./category-details/category-details.page";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
