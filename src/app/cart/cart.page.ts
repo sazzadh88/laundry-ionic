@@ -12,11 +12,13 @@ import { Router } from "@angular/router";
   providers: [DatePicker]
 })
 export class CartPage implements OnInit {
+  discount: any;
   token: any;
   data: any;
   sum: any;
   address: any;
   response: any;
+  coupon: any;
   deliveryDate: any;
   expected_delivery_date: any;
   constructor(
@@ -26,6 +28,9 @@ export class CartPage implements OnInit {
     private datePicker: DatePicker,
     public route: Router
   ) {
+    this.discount = {
+      value: 0
+    };
     this.token = this.config.getToken();
     this.deliveryDate = new Date(
       Date.now() + 3 * 24 * 60 * 60 * 1000
@@ -130,7 +135,8 @@ export class CartPage implements OnInit {
       .post(
         this.config.API_URL + "placeOrder",
         {
-          amount: this.sum,
+          amount: this.sum - this.discount.value,
+          discount: this.discount.value,
           address: this.address,
           expected_delivery_date: this.expected_delivery_date
         },
@@ -148,6 +154,36 @@ export class CartPage implements OnInit {
           this.config.showToast(
             "Failed! Please check your internet connection"
           );
+        }
+      );
+  }
+
+  applyCoupon() {
+    this.showLoader("Checking coupon! Please wait");
+
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json; charset=utf-8",
+      Authorization: "Bearer " + this.token
+    });
+
+    this.http
+      .post(
+        this.config.API_URL + "checkCoupon",
+        {
+          data: this.coupon
+        },
+        { headers: headers }
+      )
+      .subscribe(
+        data => {
+          this.response = data;
+          console.log(this.response);
+          this.discount.value = this.response.data.value;
+          this.config.showToast(this.response.response);
+          this.loadingController.dismiss();
+        },
+        error => {
+          this.config.showToast("Invalid coupon code");
         }
       );
   }

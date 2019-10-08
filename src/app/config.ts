@@ -6,8 +6,7 @@ export class Config {
     public toastController: ToastController
   ) {}
 
-  API_URL =
-    "http://demoonl2.wwwsg1-ss4.a2hosted.com/laundry-api/laundry-api/public/api/";
+  API_URL = "http://app.demoonline.co.in/api/";
   API_IMG_URL =
     "http://demoonl2.wwwsg1-ss4.a2hosted.com/laundry-api/laundry-api/public/";
 

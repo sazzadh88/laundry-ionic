@@ -42,6 +42,12 @@
 
   <ion-item lines="none">
     <ion-label>
+      <h4 class="total_left">Discount</h4>
+      <h4 class="total_right">{{ discount.value }}</h4>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>
       <h4 class="total_left">GST</h4>
       <h4 class="total_right">0.00</h4>
     </ion-label>
@@ -49,7 +55,7 @@
   <ion-item lines="none">
     <ion-label>
       <h4 class="total_left">Total</h4>
-      <h4 class="total_right">{{ sum | number: "1.2-2" }}</h4>
+      <h4 class="total_right">{{ sum - discount.value | number: "1.2-2" }}</h4>
     </ion-label>
   </ion-item>
   <ion-item lines="none">
@@ -75,6 +81,22 @@
       placeholder="Enter your delivery address"
     ></ion-textarea>
   </ion-item>
+  <ion-item lines="none">
+    <ion-input
+      placeholder="Enter Code"
+      [(ngModel)]="coupon"
+      (ngModelChange)="coupon = $event.toUpperCase()"
+    ></ion-input>
+
+    <ion-button
+      (click)="applyCoupon()"
+      [disabled]="sum == 0"
+      size="default"
+      expand="full"
+      >Apply</ion-button
+    >
+  </ion-item>
+  <br />
   <ion-item lines="none">
     <ion-button
       (click)="placeOrder()"
