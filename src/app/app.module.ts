@@ -12,8 +12,9 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AuthService } from "./auth.service";
 import { HttpClientModule } from "@angular/common/http";
 import { Config } from "./config";
-import { CategoryDetailsPage } from "./category-details/category-details.page";
+import { AdMobFree } from "@ionic-native/admob-free/ngx";
 import { CategoryDetailsPageModule } from "./category-details/category-details.module";
+import { AdmobFreeService } from "./admobfree.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,8 @@ import { CategoryDetailsPageModule } from "./category-details/category-details.m
   providers: [
     StatusBar,
     SplashScreen,
+    AdMobFree,
+    AdmobFreeService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AuthService,
     Config,

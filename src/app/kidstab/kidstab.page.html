@@ -26,9 +26,21 @@
         <div class="product_price">{{ item.price }} / Pc</div>
       </ion-col>
       <ion-col>
-        <ion-button (click)="addToCart(item)">
-          <ion-icon name="cart"></ion-icon>
-        </ion-button>
+        <ion-button
+          fill="outline"
+          (click)="cartFunction(item, 'inc')"
+          shape="round"
+          size="small"
+          >+</ion-button
+        >
+        <span class="quantity">{{ item.qtyx }}</span>
+        <ion-button
+          fill="outline"
+          (click)="cartFunction(item, 'dec')"
+          shape="round"
+          size="small"
+          >-</ion-button
+        >
       </ion-col>
     </ion-row>
   </ion-grid>

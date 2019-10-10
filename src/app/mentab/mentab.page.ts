@@ -81,6 +81,9 @@ export class MentabPage implements OnInit {
           this.data = data;
           this.loadingController.dismiss();
           console.log(this.data);
+          localStorage.setItem("items", JSON.stringify(this.data));
+          let s = localStorage.getItem("items");
+          console.log(JSON.parse(s));
         },
         error => {
           this.loadingController.dismiss();
@@ -90,7 +93,10 @@ export class MentabPage implements OnInit {
         }
       );
   }
-  ionViewWillEnter() {}
+
+  ionViewWillEnter() {
+    this.data = JSON.parse(localStorage.getItem("items"));
+  }
 
   async showLoader(msg) {
     const loading = await this.loadingController.create({
@@ -134,5 +140,32 @@ export class MentabPage implements OnInit {
 
   goToCart() {
     this.router.navigateByUrl("cart");
+  }
+
+  cartFunction(item, type) {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json; charset=utf-8",
+      Authorization: "Bearer " + this.token
+    });
+
+    this.http
+      .post(
+        this.config.API_URL + "cartItemFunction",
+        { item: item, type: type, category: localStorage.getItem("category") },
+        { headers: headers }
+      )
+      .subscribe(
+        data => {
+          this.response = data;
+          localStorage.setItem("items", JSON.stringify(this.response.data));
+          this.data = this.response.data;
+        },
+        error => {
+          this.loadingController.dismiss();
+          this.config.showToast(
+            "Failed! Please check your internet connection"
+          );
+        }
+      );
   }
 }

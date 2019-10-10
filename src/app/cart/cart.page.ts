@@ -62,7 +62,7 @@ export class CartPage implements OnInit {
     this.http
       .post(
         this.config.API_URL + "cartFunction",
-        { item: item, type: type },
+        { item: item, type: type, coupon: this.coupon },
         { headers: headers }
       )
       .subscribe(
@@ -138,6 +138,7 @@ export class CartPage implements OnInit {
           amount: this.sum - this.discount.value,
           discount: this.discount.value,
           address: this.address,
+          coupon: this.coupon,
           expected_delivery_date: this.expected_delivery_date
         },
         { headers: headers }
@@ -145,6 +146,8 @@ export class CartPage implements OnInit {
       .subscribe(
         data => {
           this.response = data;
+          console.log(this.response);
+
           this.config.showToast(this.response.response);
           this.loadingController.dismiss();
           this.route.navigateByUrl("/my-order");
@@ -184,6 +187,7 @@ export class CartPage implements OnInit {
         },
         error => {
           this.config.showToast("Invalid coupon code");
+          this.loadingController.dismiss();
         }
       );
   }
